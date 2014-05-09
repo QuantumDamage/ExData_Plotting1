@@ -28,11 +28,10 @@ plot(x = dataFromFile$Timestamps, dataFromFile$Sub_metering_1, type = "n",
      xlab = "", ylab = "Energy sub metering")
 lines(dataFromFile$Timestamps, dataFromFile$Sub_metering_1, col = "black")
 lines(dataFromFile$Timestamps, dataFromFile$Sub_metering_2, col = "red")
-# I'm not sure what color was used in assessment, so I'm using "violet"
-lines(dataFromFile$Timestamps, dataFromFile$Sub_metering_3, col = "violet")
+lines(dataFromFile$Timestamps, dataFromFile$Sub_metering_3, col = "blue")
 
 legend("topright", c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), 
-       col = c("black", "red", "violet"), lty = 1)
+       col = c("black", "red", "blue"), lty = 1)
 
 # Closing writting to file:
 dev.off()
