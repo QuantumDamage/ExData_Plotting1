@@ -1,0 +1,18 @@
+dataFromFile <- read.csv("household_power_consumption.txt", header = TRUE, 
+                         sep = ";", na.strings = "?")
+
+dataFromFile$Date <- as.Date(dataFromFile$Date, format = "%d/%m/%Y")
+
+dataFromFile <- (dataFromFile[
+  dataFromFile$Date %in% as.Date(c('2007-02-01', '2007-02-02')), ])
+
+dataFromFile$Timestamps <- paste(dataFromFile$Date, dataFromFile$Time, 
+                                 sep = "/")
+
+dataFromFile$Timestamps <- strptime(dataFromFile$Timestamps,
+                                    format = "%Y-%m-%d/%H:%M:%S")
+
+Sys.setlocale(category = "LC_TIME", locale = "C")
+
+plot(dataFromFile$Timestamps, dataFromFile$Global_active_power, type = "l", 
+     xlab = "", ylab = "Global Active Power (kilowatts)")
